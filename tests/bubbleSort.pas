@@ -45,4 +45,3 @@ PROGRAM Sort(input, output);
         FOR i := 1 TO size DO
             writeln(arr[i])
     END.
-            
