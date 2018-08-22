@@ -10,9 +10,9 @@ class PascalLexer(Lexer):
                 PLUS, MINUS, TIMES, EQ, NE, LT, GT, LE, GE, LPAR, RPAR, LBR,
                 RBR, ASSIGN, DOT, COMA, SEMICOLON, COLON, RANGE }
 
-    ignore = r' \t'
+    ignore = r' \t {([\r\n]|[^}])*?}'
 
-    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\) | \{\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\}'
+    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)'
     ignore_newline = r'\n+'
 
 
