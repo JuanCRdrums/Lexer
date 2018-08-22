@@ -4,7 +4,8 @@ class PascalLexer(Lexer):
 
     keywords = { 'program', 'var', 'array', 'of', 'procedure', 'begin', 'end',
                 'write', 'read', 'if', 'then', 'else', 'while', 'do', 'not',
-                'or', 'div', 'and'}
+                'or', 'div', 'and', 'const', 'type', 'integer', 'boolean',
+                'true', 'false'}
     tokens = { ID, INTCONST, CHARCONST, *{kw.upper() for kw in keywords},
                 PLUS, MINUS, TIMES, EQ, NE, LT, GT, LE, GE, LPAR, RPAR, LBR,
                 RBR, ASSIGN, DOT, COMA, SEMICOLON, COLON, RANGE }
@@ -14,7 +15,8 @@ class PascalLexer(Lexer):
     ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)'
     ignore_newline = r'\n+'
 
-    INTCONST = r'[0-9]+'
+
+
     CHARCONST = r'\'.*\'|".*"'
     PLUS = r'\+'
     MINUS = r'\-'
@@ -30,16 +32,21 @@ class PascalLexer(Lexer):
     LBR = r'\['
     RBR = r'\]'
     ASSIGN = r':='
+    RANGE : r'\.\.'
     DOT = r'\.'
     COMA = r','
     SEMICOLON = r';'
     COLON = r':'
-    RANGE : r'\.\.'
 
     @_(r'[a-zA-z][a-zA-Z0-9]*')
     def ID(self,t):
-        if t.value.lower in self.keywords:
+        if t.value.lower() in self.keywords:
             t.type = t.value.upper()
+        return t
+
+    @_(r'[0-9]+')
+    def INTCONST(self,t):
+        t.value = int(t.value)
         return t
 
 if __name__ == '__main__':
