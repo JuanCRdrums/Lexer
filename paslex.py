@@ -51,6 +51,11 @@ class PascalLexer(Lexer):
         t.value = int(t.value)
         return t
 
+
+    def error(self,t):
+        print("Illegal character '%s'" % t.value)
+        self.index += 1
+
 if __name__ == '__main__':
     file = open("tests/charconst.pas", "r")
     code = file.read()
