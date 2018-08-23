@@ -19,7 +19,7 @@ class PascalLexer(Lexer):
 
 
 
-    CHARCONST = r'\'.*\'|".*"'
+    CHARCONST = r'\'[^\']*\'|"[^"]*"'
     PLUS = r'\+'
     MINUS = r'\-'
     TIMES = r'\*'
@@ -52,7 +52,7 @@ class PascalLexer(Lexer):
         return t
 
 if __name__ == '__main__':
-    file = open("tests/quicksort.pas", "r")
+    file = open("tests/charconst.pas", "r")
     code = file.read()
     lexer = PascalLexer()
     for tok in lexer.tokenize(code):
