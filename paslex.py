@@ -10,9 +10,11 @@ class PascalLexer(Lexer):
                 PLUS, MINUS, TIMES, EQ, NE, LT, GT, LE, GE, LPAR, RPAR, LBR,
                 RBR, ASSIGN, DOT, COMA, SEMICOLON, COLON, RANGE }
 
-    ignore = r' \t {([\r\n]|[^}])*?}'
+    #ignore = r' \t({([\n]|[.])*?})*'
+    ignore = r' \t'
 
-    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)'
+    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)|{[^}]*}'
+    #ignore_comment = r'{[^}]*}'
     ignore_newline = r'\n+'
 
 
@@ -50,7 +52,7 @@ class PascalLexer(Lexer):
         return t
 
 if __name__ == '__main__':
-    file = open("tests/bubbleSort.pas", "r")
+    file = open("tests/quicksort.pas", "r")
     code = file.read()
     lexer = PascalLexer()
     for tok in lexer.tokenize(code):
