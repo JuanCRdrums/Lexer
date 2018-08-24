@@ -3,6 +3,7 @@ Analizador léxico para lenguaje Mini Pascal realizado en Python con la librerí
 
 Para ejecutar es necesario seguir el siguiente formato
 python3 pascal.py [opcion] archivo [archivo]* <---- Para la ejecución en terminal unix
+
 python pascal.py [opcion] archivo [archivo]* <---- Para ejecución en algún entorno de Python 3.6
 
 Opciones:
