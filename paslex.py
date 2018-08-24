@@ -53,7 +53,7 @@ class PascalLexer(Lexer):
 
 
     def error(self,t):
-        print("Illegal character '%s'" % t.value)
+        print("Illegal character '%s'" % t.value[0])
         self.index += 1
 
 if __name__ == '__main__':
