@@ -13,7 +13,7 @@ class PascalLexer(Lexer):
     #ignore = r' \t({([\n]|[.])*?})*'
     ignore = r' \t'
 
-    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)|{[^}]*}'
+    ignore_comment = r'\(\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*?\*+\)|{[^{]*}'
     #ignore_comment = r'{[^}]*}'
     ignore_newline = r'\n+'
 
