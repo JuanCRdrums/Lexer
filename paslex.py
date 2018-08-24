@@ -56,9 +56,11 @@ class PascalLexer(Lexer):
         print("Illegal character '%s'" % t.value[0])
         self.index += 1
 
-if __name__ == '__main__':
-    file = open("tests/charconst.pas", "r")
-    code = file.read()
-    lexer = PascalLexer()
+
+def printLex(file,lexer):
+    toopen = open(file)
+    code = toopen.read()
+    print("\t\t\tPROGRAM: %r\n\n" % (file))
+    print("LEXER RESULTS:")
     for tok in lexer.tokenize(code):
         print('type=%r, value=%r' % (tok.type, tok.value))
